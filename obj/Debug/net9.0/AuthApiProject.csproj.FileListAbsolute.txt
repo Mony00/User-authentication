@@ -42,3 +42,13 @@ D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.Extensions.
 D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
 D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+D:\Kristof Monika\Projects\AuthApiProject\obj\Debug\net9.0\AuthApiProject.sourcelink.json
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\BCrypt.Net-Next.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\Kristof Monika\Projects\AuthApiProject\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
