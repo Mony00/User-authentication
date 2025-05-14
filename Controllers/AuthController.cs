@@ -42,7 +42,7 @@ namespace AuthApiProject.Controllers
             {
                 new Claim(ClaimTypes.Name, user.Username)
             };
-
+            // key has to be greater than 512 bit, or 64 charcter to work properly
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsAVeryLongSecretKeyThatShouldBeAtLeastSixtyFourCharactersLong123456"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
