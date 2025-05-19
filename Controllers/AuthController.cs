@@ -35,13 +35,14 @@ namespace AuthApiProject.Controllers
             return Ok(new {message = "User registered successfully!"});
         }
 
-         //method to create JWT
+         //method to create JWT token during login
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Username)
             };
+            
             // key has to be greater than 512 bit, or 64 charcter to work properly
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsAVeryLongSecretKeyThatShouldBeAtLeastSixtyFourCharactersLong123456"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
