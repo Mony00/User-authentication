@@ -29,3 +29,5 @@ And Register class:
     JWT is a secure way of transmitiing sensitive information from the user to the server.Tokens are used to provide a secure method of validation. Consist of Header, Payload, Signature. The header contains metadata about the token such as the algorithm used for signing. The Payload contains the data being transmitted( passwword). The Signature ensures token integrity and is generated using the header, payload and secret key. 
 
     Use https://jwt.io/ for debugging token
+
+    After login the user is redirected to .../api/user/profile. to test it in postman in the header you should have the key: Authorization, Value: Bearer {token value} and nothing in the body. The Bearer Token marks a token as JWT token and grants access to protected resources.

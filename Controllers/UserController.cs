@@ -8,8 +8,9 @@ namespace AuthApiProject.Controllers
     public class UserController : ControllerBase
     {
         // this rout is protected and is only accessible with a valid JWT
-        [HttpGet("profile")]
         [Authorize]
+        [HttpGet("profile")]
+        
         public IActionResult GetUserProfile()
         {
             var username = User.Identity?.Name;
