@@ -7,6 +7,8 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace AuthApiProject.Controllers
 {
@@ -15,12 +17,27 @@ namespace AuthApiProject.Controllers
     public class AuthController : ControllerBase
     {
         // initialized an empty user string for storing users temporary in memory
-        public static List<User> users = new List<User>();
+        // public static List<User> users = new List<User>();
+
+        // Dependency injection of the _context in order to store users in database
+        private readonly UserDbContext _context;
+
+        public AuthController(UserDbContext context)
+        {
+            _context = context;
+        }
 
         //model binding
         [HttpPost("register")]
-        public IActionResult Register(RegisterDTO request)
+        public async Task<IActionResult> Register(RegisterDTO request)
         {
+            var existinguser = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
+            if (existinguser != null)
+            {
+                return BadRequest(new { messahe = "Username already exists." });
+            }
+
+            // signing the password
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
             // create user object
@@ -30,9 +47,10 @@ namespace AuthApiProject.Controllers
             };
 
             //save user
-            users.Add(user);
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
 
-            return Ok(new {message = "User registered successfully!"});
+            return Ok(new { message = "User registered successfully!" });
         }
 
          //method to create JWT token during login
@@ -49,7 +67,7 @@ namespace AuthApiProject.Controllers
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: creds
             );
 
@@ -58,9 +76,9 @@ namespace AuthApiProject.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(LoginDTO request)
+        public async Task<IActionResult> Login(LoginDTO request)
         {
-            var user = users.FirstOrDefault(u => u.Username == request.Username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == request.Username);
             // FirstOrDEfaul is a method function from LINQ
             //it find the first item in the collection that matches ther condition and it returns a default value if no match is found(null if object, 0 if int)
             
